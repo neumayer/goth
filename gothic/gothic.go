@@ -190,12 +190,6 @@ var CompleteUserAuth = func(res http.ResponseWriter, req *http.Request) (goth.Us
 		return goth.User{}, err
 	}
 
-	err = storeInSession(providerName, sess.Marshal(), req, res)
-
-	if err != nil {
-		return goth.User{}, err
-	}
-
 	gu, err := provider.FetchUser(sess)
 	return gu, err
 }
